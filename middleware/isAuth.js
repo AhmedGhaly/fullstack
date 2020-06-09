@@ -8,10 +8,11 @@ module.exports = (req, res, next) => {
     }
     let decodedtoken
     try {
-        decodedtoken = jwt.verify(token, 'the secrit key for the token migth be long and long het how are uou')
+        decodedtoken = jwt.verify(token, process.env.SECRET_STRING)
     }catch (err) {
         throw err
     }
+    console.log('dfdfd')
     req.userId = decodedtoken.id
     next()
 
